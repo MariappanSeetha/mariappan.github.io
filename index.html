@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariappan R | PHP Developer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #4d44db;
+            --dark-color: #2f2e41;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--dark-color);
+        }
+        
+        .navbar {
+            padding: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content h1 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            margin-bottom: 5px;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .portfolio-item {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-img {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-img img {
+            transition: all 0.5s;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 99, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .experience-timeline:before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid white;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info i {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .form-control {
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        textarea.form-control {
+            height: auto;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Custom Cursor */
+        body {
+            cursor: none;
+        }
+        
+        .cursor {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #6c63ff;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-follower {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #6c63ff;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.4s ease-out;
+        }
+        
+        /* Cursor hover effects */
+        a, button, .portfolio-item {
+            cursor: none;
+        }
+        
+        a:hover ~ .cursor, 
+        button:hover ~ .cursor,
+        .portfolio-item:hover ~ .cursor {
+            transform: scale(1.8);
+            background-color: white;
+        }
+        
+        /* Simple float animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .float-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Pulse animation for buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .btn-pulse:hover {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Scroll animation for sections */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <style>
+        /* WhatsApp Floating Button Styles */
+        .whatsapp-float {
+          position: fixed;
+          width: 60px;
+          height: 60px;
+          bottom: 40px;
+          right: 40px;
+          background-color: #25d366;
+          color: #FFF;
+          border-radius: 50px;
+          text-align: center;
+          font-size: 30px;
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: pulse 2s infinite;
+          transition: all 0.3s ease;
+        }
+        
+        .whatsapp-icon {
+          margin-top: 4px;
+        }
+        
+        .whatsapp-float:hover {
+          background-color: #128C7E;
+          transform: scale(1.1);
+          animation: none;
+        }
+        
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            font-size: 25px;
+          }
+        }
+      </style>
+      <style>
+          /* Contact Section Styles */
+          #contact {
+              background-color: #f8f9fa;
+          }
+          
+          .line-divider {
+              width: 80px;
+              height: 4px;
+              background: linear-gradient(to right, #6c63ff, #4d44db);
+              margin: 1rem auto;
+          }
+          
+          .contact-card {
+              background-color: white;
+              border: none;
+              transition: transform 0.3s ease;
+          }
+          
+          .contact-card:hover {
+              transform: translateY(-5px);
+          }
+          
+          .contact-method {
+              transition: all 0.3s ease;
+              border: 1px solid rgba(0,0,0,0.05);
+          }
+          
+          .contact-method:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+              border-color: rgba(108, 99, 255, 0.2);
+          }
+          
+          .bg-light-hover {
+              background-color: rgba(248, 249, 250, 0.7);
+          }
+          
+          .icon-wrapper {
+              width: 60px;
+              height: 60px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+          
+          .social-icon {
+              width: 45px;
+              height: 45px;
+              background-color: #f1f1f1;
+              color: #333;
+              transition: all 0.3s ease;
+          }
+          
+          .social-icon:hover {
+              background-color: #6c63ff;
+              color: white;
+              transform: translateY(-3px);
+          }
+          
+          /* Responsive adjustments */
+          @media (max-width: 768px) {
+              .contact-method {
+                  text-align: center;
+              }
+              
+              .icon-wrapper {
+                  margin-left: auto;
+                  margin-right: auto;
+              }
+          }
+      </style>
+      <style>
+        /* Hero Section Styles */
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .floating-image {
+            position: relative;
+            z-index: 3;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+            max-height: 400px;
+            border: 5px solid white;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .circle-shape-1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            z-index: 1;
+            animation: pulse 8s infinite;
+        }
+        
+        .circle-shape-2 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(108, 99, 255, 0.05);
+            border-radius: 50%;
+            bottom: -30px;
+            right: -30px;
+            z-index: 1;
+            animation: pulse 6s infinite reverse;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        /* Typing animation */
+        .typed-text {
+            color: #6c63ff;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #6c63ff;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .hero-section {
+                padding: 120px 0 80px;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-buttons .btn {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <style>
+        /* About Section Styles */
+        .line-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6c63ff, #4d44db);
+            margin: 1rem auto;
+        }
+        
+        .about-img-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .floating-image {
+            position: relative;
+            z-index: 2;
+            border: 5px solid white;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .shape-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed rgba(108, 99, 255, 0.3);
+            border-radius: 10px;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .shape-2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(108, 99, 255, 0.05);
+            border-radius: 10px;
+            top: 30px;
+            left: 30px;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .exp-badge {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            z-index: 3;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .highlight-box {
+            border-left: 4px solid #6c63ff;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar-striped {
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.15) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.15) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 1rem 1rem;
+        }
+    </style>
+    <style>
+    /* Education Section Styles */
+    .education-timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .education-timeline:before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(to bottom, #6c63ff, #4d44db);
+    }
+    
+    .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .timeline-date {
+        font-weight: 600;
+        color: #6c63ff;
+        margin-bottom: 10px;
+        padding-left: 40px;
+        position: relative;
+    }
+    
+    .timeline-date:before {
+        content: '';
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #6c63ff;
+        border: 4px solid white;
+        z-index: 2;
+    }
+    
+    .timeline-content {
+        background-color: white;
+        border-radius: 10px !important;
+        transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    @media (max-width: 767.98px) {
+        .education-timeline {
+            padding-left: 20px;
+        }
+        
+        .timeline-date {
+            padding-left: 30px;
+        }
+        
+        .timeline-date:before {
+            left: -6px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+    .bg-light1
+    {
+        background-color: #ccc;
+    }
+</style>
+<style>
+    /* Achievements Section Styles */
+    .achievement-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .achievement-list li {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+    
+    .achievement-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .achievement-list li:hover {
+        transform: translateX(5px);
+    }
+    
+    .line-divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, #6c63ff, #4d44db);
+        margin: 1rem auto;
+    }
+    
+    .card {
+        border-radius: 12px !important;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .card-header {
+        padding: 1.5rem;
+        border-radius: 12px 12px 0 0 !important;
+    }
+    
+    @media (max-width: 767.98px) {
+        .achievement-list li {
+            padding: 12px 0;
+        }
+    }
+</style>
+
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+  <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918489328117" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp whatsapp-icon"></i>
+</a>
+
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Mariappan R</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#achievements">Achievements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Mariappan R</h1>
+                        <h2 class="text-primary mb-3 animate__animated animate__fadeInDown animate__delay-1s">
+                            <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                        </h2>
+                        <p class="lead animate__animated animate__fadeIn animate__delay-2s">With 7+ years of experience in building robust web applications using PHP frameworks and delivering custom CRM solutions.</p>
+                        <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-3s">
+                            <a href="#portfolio" class="btn btn-primary me-2 btn-glow">View My Work</a>
+                            <a href="#contact" class="btn btn-outline-primary btn-glow">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image-container">
+                        <img src="image/mari.png" alt="Mariappan R" class="img-fluid d-none d-lg-block floating-image">
+                        <div class="circle-shape-1"></div>
+                        <div class="circle-shape-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2 class="display-5 fw-bold">About Me</h2>
+                <div class="line-divider mx-auto"></div>
+                <p class="text-muted">My journey in web development</p>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="about-img-container position-relative">
+                        <img src="image/banner.png" alt="Mariappan R" class="img-fluid rounded-3 shadow-lg floating-image">
+                        <div class="shape-1"></div>
+                        <div class="shape-2"></div>
+                        <div class="exp-badge bg-primary text-white rounded-pill py-2 px-4">
+                            <i class="fas fa-medal me-2"></i>
+                            <span>7+ Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="ps-lg-4">
+                        <h3 class="mb-4 fw-bold animate__animated animate__fadeInUp">Full-Stack PHP Developer</h3>
+                        <p class="animate__animated animate__fadeInUp animate__delay-1s">I specialize in crafting robust, scalable web applications using modern PHP frameworks. With over 7 years of hands-on experience, I've successfully delivered 50+ projects ranging from enterprise CRMs to high-performance web portals.</p>
+                        
+                        <div class="highlight-box bg-white p-4 rounded-3 shadow-sm mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+                            <p class="mb-0"><i class="fas fa-check-circle text-primary me-2"></i> Currently available for <strong>part-time/freelance</strong> work (4 hours/day)</p>
+                        </div>
+                        
+                        <div class="skills-section mt-5">
+                            <h4 class="mb-4 fw-bold animate__animated animate__fadeInUp animate__delay-3s">Technical Skills</h4>
+                            <div class="row g-4">
+                                <!-- Left Column -->
+                                <div class="col-md-6">
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-4s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">PHP & Frameworks</span>
+                                            <span>98%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-5s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">Database Design</span>
+                                            <span>98%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-6s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">API Development</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right Column -->
+                                <div class="col-md-6">
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-4s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">Payment Gateway Integration </span>
+                                            <span>98%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-5s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">Framwork 7</span>
+                                            <span>75%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skill-item animate__animated animate__fadeInUp animate__delay-6s">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="fw-medium">HTML5 & CSS3</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>My Portfolio</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/1.png" alt="Deepika Matrimonial" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.deepikamatrimonial.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Deepika Matrimonial</h5>
+                            <p class="text-muted">Matrimonial website built with CI3, MySQL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/2.png" alt="Seasons Oman" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://seasonsoman.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Seasons Oman</h5>
+                            <p class="text-muted">Business website with custom CMS (Laravel) </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/3.png" alt="SAT Cargo" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.dblossoms.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>DBlossoms</h5>
+                            <p class="text-muted">Online Ecommerce</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/4.png" alt="IAM Automotive" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://iamautomotive.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>IAM Automotive</h5>
+                            <p class="text-muted">Tours and Packages With Membership </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/5.png" alt="Media Nalytika" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.medianalytika.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Media Nalytika</h5>
+                            <p class="text-muted">Analytics platform with dashboard</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/6.png" alt="Tirikala" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://tirikala.com/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Tirikala</h5>
+                            <p class="text-muted">E-commerce website with payment integration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/7.png" alt="Tirikala" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="https://satcargo.net/" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Sat Cargo</h5>
+                            <p class="text-muted">Online Deleivery Portal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item animate-on-scroll">
+                        <div class="portfolio-img">
+                            <img src="image/8.png" alt="Tirikala" class="img-fluid">
+                            <div class="portfolio-overlay">
+                                <a href="#" target="_blank" class="btn btn-light">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content p-3">
+                            <h5>Clinic Management System </h5>
+                            <p class="text-muted">Online Delivery Portal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="py-5 hero-section">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2 class="display-5 fw-bold">Education</h2>
+                <div class="line-divider mx-auto"></div>
+                <p class="text-muted">My academic qualifications</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="education-timeline">
+                        <!-- M.Sc -->
+                        <div class="timeline-item animate__animated animate__fadeInUp">
+                            <div class="timeline-date">M.Sc Computer Science</div>
+                            <div class="timeline-content card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                                        <div class="mb-3 mb-md-0">
+                                            <h4 class="fw-bold mb-1">Bharathidhasan University</h4>
+                                            <p class="mb-1 text-muted"><i class="fas fa-map-marker-alt me-2"></i>St. Joseph's College, Trichy</p>
+                                        </div>
+                                        <div class="badge bg-primary bg-opacity-10 text-primary py-2 px-3 align-self-start">
+                                            <i class="fas fa-graduation-cap me-2"></i>Postgraduate
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- B.Sc -->
+                        <div class="timeline-item animate__animated animate__fadeInUp animate__delay-1s">
+                            <div class="timeline-date">B.Sc Computer Science</div>
+                            <div class="timeline-content card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                                        <div class="mb-3 mb-md-0">
+                                            <h4 class="fw-bold mb-1">Manonmaniam Sundaranar University</h4>
+                                            <p class="mb-1 text-muted"><i class="fas fa-map-marker-alt me-2"></i>St. Xavier's College, Tirunelveli</p>
+                                        </div>
+                                        <div class="badge bg-success bg-opacity-10 text-success py-2 px-3 align-self-start">
+                                            <i class="fas fa-user-graduate me-2"></i>Undergraduate
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>My Experience</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="experience-timeline">
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2016 - Present</div>
+                            <div class="timeline-title">Senior PHP Developer</div>
+                            <div class="timeline-desc">
+                                <p>Developed and maintained web applications using PHP frameworks including Laravel and CodeIgniter. Built custom CRM systems tailored to client requirements.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2014 - 2016</div>
+                            <div class="timeline-title">PHP Developer</div>
+                            <div class="timeline-desc">
+                                <p>Worked on various web projects implementing core PHP solutions and MySQL databases. Gained experience in full project lifecycles.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2012 - 2014</div>
+                            <div class="timeline-title">Web Developer</div>
+                            <div class="timeline-desc">
+                                <p>Started career building websites with HTML, CSS, JavaScript and basic PHP. Developed foundational skills in web development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-5 hero-section">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2 class="display-5 fw-bold">Achievements & Leadership</h2>
+                <div class="line-divider mx-auto"></div>
+                <p class="text-muted">My academic accomplishments and leadership roles</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Academic Achievements Column -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-white border-0">
+                            <h3 class="fw-bold mb-0 text-center text-primary">
+                                <i class="fas fa-trophy me-2"></i>Academic Honors
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="achievement-list">
+                                <li class="animate__animated animate__fadeInUp">
+                                    <div class="d-flex">
+                                        <div class="badge bg-primary bg-opacity-10 text-primary p-2 me-3">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">First Rank Holder</h5>
+                                            <p class="mb-0">2012-2013 and 2014-2015 at St. Xavier's College</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="animate__animated animate__fadeInUp animate__delay-1s">
+                                    <div class="d-flex">
+                                        <div class="badge bg-primary bg-opacity-10 text-primary p-2 me-3">
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Second Rank Holder</h5>
+                                            <p class="mb-0">2016-2017 at St. Joseph's College</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="animate__animated animate__fadeInUp animate__delay-2s">
+                                    <div class="d-flex">
+                                        <div class="badge bg-primary bg-opacity-10 text-primary p-2 me-3">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Science Exhibition Winner</h5>
+                                            <p class="mb-0">Second prize in Inter-Collegiate Science and Technology exhibition</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership & Competitions Column -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-white border-0">
+                            <h3 class="fw-bold mb-0 text-center text-success">
+                                <i class="fas fa-users me-2"></i>Leadership & Competitions
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="achievement-list">
+                                <li class="animate__animated animate__fadeInUp">
+                                    <div class="d-flex">
+                                        <div class="badge bg-success bg-opacity-10 text-success p-2 me-3">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Department Secretary</h5>
+                                            <p class="mb-0">Both at St. Xavier's and St. Joseph's Colleges</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="animate__animated animate__fadeInUp animate__delay-1s">
+                                    <div class="d-flex">
+                                        <div class="badge bg-success bg-opacity-10 text-success p-2 me-3">
+                                            <i class="fas fa-users-cog"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">College Joint Secretary</h5>
+                                            <p class="mb-0">St. Xavier's College</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="animate__animated animate__fadeInUp animate__delay-2s">
+                                    <div class="d-flex">
+                                        <div class="badge bg-success bg-opacity-10 text-success p-2 me-3">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Coding Competition Winner</h5>
+                                            <p class="mb-0">Dr. Sivanthi Adhithanar Engineering College</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="animate__animated animate__fadeInUp animate__delay-3s">
+                                    <div class="d-flex">
+                                        <div class="badge bg-success bg-opacity-10 text-success p-2 me-3">
+                                            <i class="fas fa-laptop"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="fw-bold mb-1">Web Design Champion</h5>
+                                            <p class="mb-0">First prize at J.P. College of Arts and Science</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+        <!-- Contact Section -->
+       <section id="contact" class="py-5">
+          <div class="container">
+              <div class="section-title text-center mb-5">
+                  <h2 class="display-5 fw-bold">Get In Touch</h2>
+                  <div class="line-divider mx-auto"></div>
+                  <p class="text-muted">Feel free to reach out for collaborations or opportunities</p>
+              </div>
+              
+              <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                      <div class="contact-card p-4 p-lg-5 shadow-lg rounded-4">
+                          <div class="row g-4">
+                              <!-- Email -->
+                              <div class="col-md-6">
+                                  <div class="contact-method p-4 h-100 rounded-3 bg-light-hover">
+                                      <div class="icon-wrapper bg-primary bg-opacity-10 rounded-circle mb-3">
+                                          <i class="fas fa-envelope text-primary fs-4"></i>
+                                      </div>
+                                      <h5 class="fw-bold mb-2">Email Me</h5>
+                                      <a href="mailto:mariseetha19@gmail.com" class="text-decoration-none link-primary">
+                                          mariseetha19@gmail.com
+                                      </a>
+                                  </div>
+                              </div>
+                              
+                              <!-- Phone -->
+                              <div class="col-md-6">
+                                  <div class="contact-method p-4 h-100 rounded-3 bg-light-hover">
+                                      <div class="icon-wrapper bg-success bg-opacity-10 rounded-circle mb-3">
+                                          <i class="fas fa-phone text-success fs-4"></i>
+                                      </div>
+                                      <h5 class="fw-bold mb-2">Call Me</h5>
+                                      <a href="tel:+91918489328117" class="text-decoration-none link-success">
+                                          +91 84893 28117
+                                      </a>
+                                  </div>
+                              </div>
+                              
+                              <!-- Location -->
+                              <div class="col-md-6">
+                                  <div class="contact-method p-4 h-100 rounded-3 bg-light-hover">
+                                      <div class="icon-wrapper bg-danger bg-opacity-10 rounded-circle mb-3">
+                                          <i class="fas fa-map-marker-alt text-danger fs-4"></i>
+                                      </div>
+                                      <h5 class="fw-bold mb-2">Location</h5>
+                                      <p class="mb-0 text-muted">Tamil Nadu, India</p>
+                                  </div>
+                              </div>
+                              
+                              <!-- Availability -->
+                              <div class="col-md-6">
+                                  <div class="contact-method p-4 h-100 rounded-3 bg-light-hover">
+                                      <div class="icon-wrapper bg-info bg-opacity-10 rounded-circle mb-3">
+                                          <i class="fas fa-clock text-info fs-4"></i>
+                                      </div>
+                                      <h5 class="fw-bold mb-2">Availability</h5>
+                                      <p class="mb-0 text-muted">Part-time/Freelance (4 hours/day)</p>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <!-- Social Media -->
+                          <!--
+                          <div class="social-links text-center mt-5 pt-3">
+                              <h5 class="fw-bold mb-4">Connect With Me</h5>
+                              <div class="d-flex justify-content-center gap-3">
+                                  <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center">
+                                      <i class="fab fa-linkedin-in"></i>
+                                  </a>
+                                  <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center">
+                                      <i class="fab fa-github"></i>
+                                  </a>
+                                  <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center">
+                                      <i class="fab fa-twitter"></i>
+                                  </a>
+                                  <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center">
+                                      <i class="fab fa-instagram"></i>
+                                  </a>
+                              </div>
+                          </div>
+                          !-->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-icons mb-4">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p>&copy; 2023 Mariappan R. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Add these scripts before </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Typing animation
+        document.addEventListener('DOMContentLoaded', function(){
+            var typed = new Typed('.typed-text', {
+                strings: ["PHP Developer", "Laravel Expert", "Web Developer", "CRM Specialist"],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: false
+            });
+            
+            // Smooth hover effect for buttons
+            const buttons = document.querySelectorAll('.btn-glow');
+            buttons.forEach(button => {
+                button.addEventListener('mousemove', (e) => {
+                    const x = e.pageX - button.getBoundingClientRect().left;
+                    const y = e.pageY - button.getBoundingClientRect().top;
+                    
+                    button.style.setProperty('--x', x + 'px');
+                    button.style.setProperty('--y', y + 'px');
+                });
+            });
+        });
+    </script>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            // Move main cursor
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Move follower with slight delay
+            setTimeout(() => {
+                cursorFollower.style.left = (e.clientX - 15) + 'px';
+                cursorFollower.style.top = (e.clientY - 15) + 'px';
+            }, 100);
+        });
+        
+        // Cursor hover effects
+        document.querySelectorAll('a, button, .portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.8)';
+                cursor.style.backgroundColor = 'white';
+                cursorFollower.style.transform = 'scale(0.8)';
+                cursorFollower.style.borderColor = 'white';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.backgroundColor = '#6c63ff';
+                cursorFollower.style.transform = 'scale(1)';
+                cursorFollower.style.borderColor = '#6c63ff';
+            });
+        });
+        
+        // Existing scroll and animation code...
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+        
+        $('a[href*="#"]').on('click', function(e) {
+            e.preventDefault();
+            
+            $('html, body').animate(
+                {
+                    scrollTop: $($(this).attr('href')).offset().top - 70,
+                },
+                500,
+                'linear'
+            );
+        });
+        
+        function animateOnScroll() {
+            $('.animate-on-scroll').each(function() {
+                var position = $(this).offset().top;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                
+                if (scroll + windowHeight > position) {
+                    $(this).addClass('animated');
+                }
+            });
+        }
+        
+        $(window).on('scroll', animateOnScroll);
+        $(document).ready(animateOnScroll);
+    </script>
+
+</body>
+</html>
